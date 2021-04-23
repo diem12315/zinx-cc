@@ -20,7 +20,7 @@ type Server struct {
 
 // 启动服务器
 func (s *Server) Start() {
-	fmt.Printf("[start] Server Linstnner at IP %s,Port:%d, is starting\n", s.IP, s.Port)
+	fmt.Printf("[start] Server Linstnner at %s:%d, is starting\n", s.IP, s.Port)
 	go func() {
 		// 1. 获取一个tcp的addr
 		addr, err := net.ResolveTCPAddr(s.IPVersion, fmt.Sprintf("%s:%d", s.IP, s.Port))
