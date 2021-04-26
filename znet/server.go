@@ -20,13 +20,14 @@ type Server struct {
 }
 
 // 定义客户端链接所绑定的handle api(目前是固定的，后期由用户修改)
-func CallBackClient(conn *net.TCPConn, data []byte, cnf int) error {
+func CallBackClient(conn *net.TCPConn, data []byte, cnt int) error {
 	// 回显业务
 	fmt.Println("[Conn Handle] CallbackToClient ....")
-	if _, err := conn.Write(data[:cnf]); err != nil {
+	if _, err := conn.Write(data[:cnt]); err != nil {
 		fmt.Println("write back buf err", err)
-		return errors.New("CallBackToClient error")
+		return errors.New("CallBack To Client error")
 	}
+
 	return nil
 }
 
@@ -51,7 +52,8 @@ func (s *Server) Start() {
 		fmt.Println("start Zinx server succ,", s.Name, "succ,Listennning..")
 
 		// 变量和赋值可以在同一行
-		var cid uint32 = 0
+		var cid uint32
+		cid = 0
 
 		// 3. 阻塞的等待客户端连接，处理客户端链接业务(读写)
 		for {
@@ -59,6 +61,7 @@ func (s *Server) Start() {
 			conn, err := listen.AcceptTCP()
 			if err != nil {
 				fmt.Println("Accept err", err)
+				continue
 			}
 			// 将处理新链接的业务方法和conn进行绑定得到我们的链接模块
 			dealConn := NewConnection(conn, cid, CallBackClient)

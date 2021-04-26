@@ -103,5 +103,5 @@ func (c *Connection) RemoteAddr() net.Addr {
 
 // 发送数据，将数据发送远程的客户端
 func (c *Connection) Send(data []byte) error {
-	return nil
+	return
 }
