@@ -52,8 +52,7 @@ func (s *Server) Start() {
 		fmt.Println("start Zinx server succ,", s.Name, "succ,Listennning..")
 
 		// 变量和赋值可以在同一行
-		var cid uint32
-		cid = 0
+		var cid uint32 = 0
 
 		// 3. 阻塞的等待客户端连接，处理客户端链接业务(读写)
 		for {
@@ -98,7 +97,7 @@ func NewServer(name string) ziface.IServer {
 		Name:      name,
 		IPVersion: "tcp4",
 		IP:        "0.0.0.0",
-		Port:      8099,
+		Port:      8999,
 	}
 
 	return s

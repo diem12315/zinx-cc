@@ -64,7 +64,7 @@ func (c *Connection) StartReader() {
 func (c *Connection) Start() {
 	fmt.Println("Conn Start()... ConnID = ", c.ConnID)
 	// 启动从当前链接的读业务
-
+	go c.StartReader()
 	// TODO 启动从当前链接写数据的业务
 
 }
@@ -103,5 +103,5 @@ func (c *Connection) RemoteAddr() net.Addr {
 
 // 发送数据，将数据发送远程的客户端
 func (c *Connection) Send(data []byte) error {
-	return
+	return nil
 }
