@@ -27,7 +27,6 @@ func CallBackClient(conn *net.TCPConn, data []byte, cnt int) error {
 		fmt.Println("write back buf err", err)
 		return errors.New("CallBack To Client error")
 	}
-
 	return nil
 }
 
