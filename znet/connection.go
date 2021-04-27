@@ -57,8 +57,6 @@ func (c *Connection) StartReader() {
 			break
 		}
 
-		// 在服务端显示客户端内容
-		fmt.Printf("server call back %s,cnt = %d\n", buf, cnt)
 	}
 }
 
