@@ -8,7 +8,7 @@ import (
 )
 
 /*
-	链接模块
+	链接模块定义
 */
 type Connection struct {
 	// 当前链接的socket TCP套接字
@@ -57,6 +57,8 @@ func (c *Connection) StartReader() {
 			break
 		}
 
+		// 在服务端显示客户端内容
+		fmt.Printf("server call back %s,cnt = %d\n", buf, cnt)
 	}
 }
 
